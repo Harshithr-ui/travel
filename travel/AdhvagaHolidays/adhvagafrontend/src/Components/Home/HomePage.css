@@ -1,0 +1,379 @@
+.adhvaga-home {
+  font-family: system-ui, sans-serif;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  /* fallback for browsers that don't support gradients */
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.7) 60%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+    
+  max-width: 900px;
+  padding: 0 5%;
+}
+
+.hero-content h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  font-family: 'Stardom', serif;
+  letter-spacing: 0.05em;
+}
+
+.hero-content h1 span {
+  color: #facc15;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  padding: 0 5%;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.hero-buttons a {
+  text-decoration: none;
+}
+.feature-grid a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn-primary {
+  background: #facc15;
+  color: #111;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  background: #f59e0b;
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 10px 30px rgba(250, 204, 21, 0.4);
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+/* STATS */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 4rem 5%;
+  background: #111827;
+  color: white;
+  text-align: center;
+}
+
+.stats .scroll-stagger {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.stats .stagger-item {
+  flex: 1 1 180px;
+  max-width: 250px;
+}
+
+.stat {
+  padding: 1.5rem 2rem;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #facc15;
+}
+
+.stat-label {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+}
+
+/* FEATURES */
+.features {
+  padding: 6rem 5%;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+.features h2 span {
+  color: #facc15;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.feature-card {
+  background: oklch(98.268% 0.00275 285.746);
+  padding: 3rem;
+  border-radius: 24px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  width: 64px;
+  height: 64px;
+  background: #facc15;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* TESTIMONIALS */
+.testimonials {
+  background: #f3f4f6;
+  padding: 6rem 5%;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.testimonial-card {
+  background: linear-gradient(135deg, #1f1f1f 0%, #0a1a2f 100%);
+  padding: 3rem;
+  border-radius: 24px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #ffffff;
+}
+
+.testimonial-card p {
+  color: #e5e7eb;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.testimonial-card .author strong {
+  color: #ffffff;
+}
+
+.testimonial-card .author span {
+  color: #9ca3af;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.stars svg {
+  fill: #facc15;
+  color: #facc15;
+}
+
+.author {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  align-items: center;
+}
+
+/* JustDial Section */
+.justdial-section {
+  margin-top: 4rem;
+  text-align: center;
+  padding-top: 3rem;
+  border-top: 1px solid #ddd;
+}
+
+.justdial-text {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.justdial-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+  color: white;
+  padding: 1.2rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.justdial-button:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(255, 107, 53, 0.5);
+}
+
+.justdial-logo {
+  width: 45px;
+  height: 45px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.justdial-icon {
+  width: 24px;
+  height: 24px;
+  color: #ff6b35;
+  fill: #ff6b35;
+}
+
+.justdial-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.justdial-title {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.justdial-brand {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* CTA */
+.cta {
+  padding: 6rem 5%;
+  background: linear-gradient(to right, #facc15, #eab308);
+  border-radius: 48px;
+  margin: 6rem 5%;
+  text-align: center;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.btn-dark {
+  background: #111;
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-dark:hover {
+  background: #333;
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.btn-light {
+  background: white;
+  color: #111;
+  padding: 1rem 2.5rem;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-light:hover {
+  background: #f0f0f0;
+  transform: scale(1.05);
+}

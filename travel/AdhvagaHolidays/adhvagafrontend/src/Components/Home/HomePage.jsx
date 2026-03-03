@@ -1,0 +1,314 @@
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { useSettings } from "../../context/SettingsContext";
+import { ScrollReveal, ScrollStagger } from "../includes/ScrollAnimations";
+import LogoLoop from "../LogoLoop/LogoLoop";
+import {
+  Plane,
+  Globe,
+  Shield,
+  Clock,
+  Star,
+  MapPin,
+  Users,
+  Map,
+} from "lucide-react";
+import "./HomePage.css";
+
+/* ================= IMAGE WITH FALLBACK (INLINE) ================= */
+
+const ERROR_IMG_SRC =
+  "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzLjciPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjU2IiBoZWlnaHQ9IjU2IiByeD0iNiIvPjxwYXRoIGQ9Im0xNiA1OCAxNi0xOCAzMiAzMiIvPjxjaXJjbGUgY3g9IjUzIiBjeT0iMzUiIHI9IjciLz48L3N2Zz4KCg==";
+
+function ImageWithFallback({ src, alt, className, style, ...rest }) {
+  const [didError, setDidError] = useState(false);
+
+  if (didError) {
+    return (
+      <div
+        className={`inline-block bg-gray-100 text-center align-middle ${
+          className || ""
+        }`}
+        style={style}
+      >
+        <div className="flex items-center justify-center w-full h-full">
+          <img
+            src={ERROR_IMG_SRC}
+            alt="Error loading image"
+            data-original-url={src}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={className}
+      style={style}
+      onError={() => setDidError(true)}
+      {...rest}
+    />
+  );
+}
+
+/* ================= PAGE TRANSITION (INLINE) ================= */
+
+function PageTransition({ children }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.3 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/* ================= HOME PAGE ================= */
+
+export default function HomePage() {
+  const navigate = useNavigate();
+  const { settings } = useSettings();
+
+  const features = [
+    {
+      icon: Plane,
+      title: "Flight Booking",
+      description:
+        "Book flights to destinations worldwide with competitive prices and flexible schedules",
+    },
+    {
+      icon: Shield,
+      title: "Travel Insurance",
+      description:
+        "Comprehensive coverage for peace of mind during your travels",
+    },
+    {
+      icon: Globe,
+      title: "Visa Assistance",
+      description: "Expert help with visa applications for all countries",
+    },
+    {
+      icon: Clock,
+      title: "24/7 Support",
+      description: "Round-the-clock customer service for all your travel needs",
+    },
+  ];
+
+  const testimonials = [
+    {
+      name: "Verified Customer",
+      location: "Bangalore, India",
+      rating: 5,
+      text:
+        "The agency arranged for a well-behaved and punctual driver for our trip. They were professional and made our journey comfortable.",
+    },
+    {
+      name: "Verified Customer",
+      location: "Bangalore, India",
+      rating: 5,
+      text:
+        "They accommodated well for the change in plans during the trip. Very flexible and understanding service!",
+    },
+    {
+      name: "Verified Customer",
+      location: "Bangalore, India",
+      rating: 5,
+      text:
+        "Helped with early check-in on early arrival at the hotel. Their attention to detail and customer service is excellent.",
+    },
+  ];
+
+  const stats = [
+    { number: "50K+", label: "Happy Travelers" },
+    { number: "120+", label: "Destinations" },
+    { number: "15+", label: "Years Experience" },
+    { number: "24/7", label: "Support" },
+  ];
+
+  const serviceLoopItems = [
+    { node: <span>✈️ Air Tickets</span>, title: "Air Tickets", href: "/Services" },
+    { node: <span>🏠 Domestic Holidays</span>, title: "Domestic Holidays", href: "/Domestic" },
+    { node: <span>🌍 International Holidays</span>, title: "International Holidays", href: "/International" },
+    { node: <span>📋 Visa Assistance</span>, title: "Visa Assistance", href: "/Services" },
+    { node: <span>🛡️ Travel Insurance</span>, title: "Travel Insurance", href: "/Services" },
+    { node: <span>🚗 Car Rentals</span>, title: "Car Rentals", href: "/Services" },
+    { node: <span>💼 Corporate Services</span>, title: "Corporate Services", href: "/Services" },
+    { node: <span>✨ Custom Services</span>, title: "Custom Services", href: "/Services" },
+  ];
+
+  return (
+    <PageTransition>
+      <div className="adhvaga-home">
+        {/* HERO */}
+        <section className="hero">
+          <video
+            className="hero-bg"
+            src="/Untitled video - Made with Clipchamp (4).mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            aria-label="Travel destination video background"
+          />
+          <div className="hero-overlay" />
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="hero-content"
+          >
+            <h1>
+              {settings.heroText || "Adhvaga Holidays – Your Trusted Travel Partner"}
+            </h1>
+
+            <p>
+              {settings.tagline || "Experience the world with confidence. From local gems to international wonders, we handle everything for your perfect getaway."}
+            </p>
+
+            <div className="hero-buttons">
+              <button className="btn-primary" onClick={() => navigate('/explore-globe')}>
+                <Globe /> Explore World
+              </button>
+              <button className="btn-outline" onClick={() => navigate('/india-globe')}>
+                <Map /> Explore India
+              </button>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* SERVICES LOOP */}
+        <section className="service-loop-section">
+          <LogoLoop
+            logos={serviceLoopItems}
+            speed={80}
+            direction="left"
+            logoHeight={24}
+            gap={20}
+            hoverSpeed={0}
+            scaleOnHover
+            fadeOut
+            fadeOutColor="#0a0a0a"
+            ariaLabel="Our travel services"
+          />
+        </section>
+
+        {/* STATS */}
+        <section className="stats">
+          <ScrollStagger staggerDelay={150}>
+            {stats.map((s, i) => (
+              <div key={i} className="stat scroll-card">
+                <div className="stat-number">{s.number}</div>
+                <div className="stat-label">{s.label}</div>
+              </div>
+            ))}
+          </ScrollStagger>
+        </section>
+
+        {/* FEATURES */}
+        <section className="features">
+          <ScrollReveal animation="fade-up">
+            <h2>
+              Why Choose <span>Adhvaga</span>
+            </h2>
+            <p>
+              We provide comprehensive travel solutions tailored to your unique
+              needs.
+            </p>
+          </ScrollReveal>
+
+          <div className="feature-grid">
+            {features.map((f, i) => (
+              <ScrollReveal key={i} animation="scale-up" delay={i * 100}>
+                <div className="feature-card scroll-card">
+                  <div className="feature-icon">
+                    <f.icon />
+                  </div>
+                  <h3>{f.title}</h3>
+                  <p>{f.description}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </section>
+
+        {/* TESTIMONIALS */}
+        <section className="testimonials">
+          <ScrollReveal animation="fade-up">
+            <h2>What Our Clients Say</h2>
+          </ScrollReveal>
+
+          <div className="testimonial-grid">
+            {testimonials.map((t, i) => (
+              <ScrollReveal key={i} animation="fade-up" delay={i * 150}>
+                <div className="testimonial-card scroll-card glow-on-scroll">
+                  <div className="stars">
+                    {[...Array(t.rating)].map((_, j) => (
+                      <Star key={j} />
+                    ))}
+                  </div>
+
+                  <p>"{t.text}"</p>
+
+                  <div className="author">
+                    <Users />
+                    <div>
+                      <strong>{t.name}</strong>
+                      <span>
+                        <MapPin /> {t.location}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* JustDial Reviews Link */}
+          <div className="justdial-section">
+            <p className="justdial-text">See what more customers say about us</p>
+            <a 
+              href="https://jsdl.in/DT-154FCRMP" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="justdial-button"
+            >
+              <div className="justdial-logo">
+                <Star className="justdial-icon" />
+              </div>
+              <div className="justdial-content">
+                <span className="justdial-title">View Reviews on</span>
+                <strong className="justdial-brand">JustDial</strong>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="cta">
+          <ScrollReveal animation="zoom-in">
+            <h2>
+              Ready to Start Your <br /> Next Great Adventure?
+            </h2>
+            <p>
+              Let us handle the details while you make the memories.
+            </p>
+
+            <div className="cta-buttons">
+              <button className="btn-dark">Get Started Now</button>
+              <button className="btn-light">View Packages</button>
+            </div>
+          </ScrollReveal>
+        </section>
+      </div>
+    </PageTransition>
+  );
+}

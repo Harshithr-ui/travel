@@ -1,0 +1,109 @@
+.dock-outer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  margin: 0 0.5rem;
+  display: flex;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  transform: translateY(0) translateZ(0);
+  will-change: transform, opacity;
+}
+
+.dock-outer.dock-hidden {
+  transform: translateY(120%) translateZ(0);
+  opacity: 0;
+}
+
+.dock-panel {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
+  display: flex;
+  align-items: flex-end;
+  width: fit-content;
+  gap: 1rem;
+  border-radius: 1rem;
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  padding: 0 0.5rem 0.5rem;
+  pointer-events: auto;
+  will-change: transform;
+}
+
+.dock-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgb(250, 204, 21) 0%, rgb(250, 180, 21) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  outline: none;
+  will-change: width, height;
+  transform: translateZ(0);
+}
+
+.dock-item:hover {
+  background: linear-gradient(135deg, #2a2a2a 0%, #0d2040 100%);
+  border-color: #facc15;
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.3);
+}
+
+.dock-item:focus-visible {
+  outline: 2px solid #facc15;
+  outline-offset: 2px;
+}
+
+.dock-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dock-item:hover .dock-icon {
+  color: #facc15;
+  transform: scale(1.1);
+}
+
+.dock-icon svg {
+  width: 50%;
+  height: 50%;
+}
+
+.dock-label {
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  width: fit-content;
+  white-space: pre;
+  border-radius: 0.375rem;
+  background: rgba(30, 30, 30, 0.95);
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  color: #fff;
+  transform: translateX(-50%) translateZ(0);
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .dock-panel {
+    gap: 0.5rem;
+    padding: 0 0.25rem 0.25rem;
+  }
+}

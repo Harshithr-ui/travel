@@ -1,0 +1,206 @@
+import React, { useEffect, useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import { generateDestinationAlt } from "../../utils/seoHelpers";
+import "./InternationalPackages.css";
+import { BASE_URL } from "../../config/api";
+import GlareHover from "../GlareHover";
+
+const PackagesSection = () => {
+  const navigate = useNavigate();
+  const [packages, setPackages] = useState([]);
+  const [filter, setFilter] = useState("All");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  const categories = [
+    "All",
+    "Luxury",
+    "Adventure",
+    "Cultural",
+    "Relaxation",
+    "Family",
+  ];
+
+  // 🔹 FETCH PACKAGES FROM BACKEND - Now with backend filtering for better performance
+  useEffect(() => {
+    const fetchPackages = async () => {
+      try {
+        // ✅ Fetch ONLY international packages from backend (reduces data transfer)
+        const res = await fetch(`${BASE_URL}/api/packages?type=International`);
+        if (!res.ok) {
+          throw new Error("Failed to fetch packages");
+        }
+        const data = await res.json();
+        setPackages(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPackages();
+  }, []);
+
+  // 🔹 Memoize filtered packages to prevent unnecessary recalculations
+  const filteredPackages = useMemo(() => {
+    return filter === "All" 
+      ? packages 
+      : packages.filter((p) => p.category === filter);
+  }, [packages, filter]);
+
+  return (
+    <section id="packages" className="packages-page packages-section">
+      <div className="container">
+        <div className="header-flex">
+          {/* <div className="header-text">
+            <span className="sub-heading">Our Curated Collection</span>
+            <h2 className="main-heading">International Packages</h2>
+            <p className="description">
+              Hand-picked destinations and itineraries designed for the
+              discerning traveler.
+            </p>
+          </div> */}
+          <div></div>
+
+          <div className="filter-buttons">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`filter-btn ${filter === cat ? "active" : ""}`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 🔹 Loading & Error (UI-safe) */}
+        {loading && (
+          <div className="empty-state">
+            <p>Loading packages...</p>
+          </div>
+        )}
+
+        {error && (
+          <div className="empty-state">
+            <p>{error}</p>
+          </div>
+        )}
+
+        {!loading && !error && (
+          <div className="packages-grid">
+            {filteredPackages.map((pkg) => (
+              <GlareHover
+                key={pkg._id}
+                glareColor="#ffffff"
+                glareOpacity={0.25}
+                glareAngle={-30}
+                glareSize={300}
+                transitionDuration={600}
+                playOnce={false}
+                className="package-card-wrapper"
+              >
+              <article className="package-card">
+                <div className="image-container">
+                  <img
+                    src={pkg.image}
+                    alt={generateDestinationAlt(pkg.destination || pkg.title, "international holiday package")}
+                    className="package-image"
+                    loading="lazy"
+                  />
+                  <div className="image-overlay"></div>
+
+                  {pkg.tag && <span className="package-tag">{pkg.tag}</span>}
+
+                  <div className="hover-details">
+                    <span className="rating">
+                      <svg
+                        className="star-icon"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      {pkg.rating}
+                    </span>
+                    <span className="view-details-pill">View Details</span>
+                  </div>
+                </div>
+
+                <div className="card-content">
+                  <div className="content-meta">
+                    <span className="category-label">{pkg.category}</span>
+                    <span className="duration-label">
+                      <svg
+                        className="icon"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      {pkg.duration?.split("/")[0]}
+                    </span>
+                  </div>
+
+                  <h3 className="package-title">{pkg.title}</h3>
+                  <p className="destination-text">
+                    <svg
+                      className="icon"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                    {pkg.destination}
+                  </p>
+
+                  <div className="card-footer">
+                    <div className="price-box">
+                      <span className="starting-label">Starting from</span>
+                      <span className="price-amount">${pkg.price}</span>
+                    </div>
+                    <button
+                      className="book-button"
+                      onClick={() => navigate(`/packages/${pkg._id}`)}
+                    >
+                      Book Now
+                    </button>
+                  </div>
+                </div>
+              </article>
+              </GlareHover>
+            ))}
+          </div>
+        )}
+
+        {!loading && filteredPackages.length === 0 && (
+          <div className="empty-state">
+            <p>No packages found in this category yet. Stay tuned!</p>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+};
+
+export default PackagesSection;
