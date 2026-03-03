@@ -1,4 +1,4 @@
-import HomePage from "../Components/Home/homepage";
+import HomePage from "../Components/Home/HomePage";
 import BlogsPage from "../Components/Blogs/BlogsPage";
 import SEOHead from "../Components/SEO/SEOHead";
 import StructuredData from "../Components/SEO/StructuredData";
