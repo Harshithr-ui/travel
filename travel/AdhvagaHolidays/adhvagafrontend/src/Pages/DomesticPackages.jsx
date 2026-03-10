@@ -1,4 +1,5 @@
 
+import { useRef, useEffect, useState } from "react";
 import DomesticPackages from "../Components/Packages/DomesticPackages";
 import SEOHead from "../Components/SEO/SEOHead";
 import { SEO_METADATA, generateBreadcrumbSchema } from "../utils/seoHelpers";
@@ -38,6 +39,8 @@ function Domestic() {
           muted
           loop
           playsInline
+          preload="metadata"
+          poster="/domestic.jpg"
           aria-hidden="true"
           style={{
             position: 'absolute',

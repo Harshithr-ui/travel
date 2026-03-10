@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState } from "react";
 import PackagesSection from "../Components/Packages/InternationalPackages";
 import SEOHead from "../Components/SEO/SEOHead";
 import { SEO_METADATA, generateBreadcrumbSchema } from "../utils/seoHelpers";
@@ -37,6 +38,8 @@ function International() {
           muted
           loop
           playsInline
+          preload="metadata"
+          poster="/pexels-dominikagregus-672532.jpg"
           aria-hidden="true"
           style={{
             position: 'absolute',

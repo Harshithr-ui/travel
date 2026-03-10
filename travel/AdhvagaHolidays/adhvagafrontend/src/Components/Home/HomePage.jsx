@@ -155,7 +155,9 @@ export default function HomePage() {
             loop
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
+            poster="/domestic.jpg"
+            fetchpriority="high"
             aria-label="Travel destination video background"
           />
           <div className="hero-overlay" />
