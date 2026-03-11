@@ -148,17 +148,12 @@ export default function HomePage() {
       <div className="adhvaga-home">
         {/* HERO */}
         <section className="hero">
-          <video
+          <img
             className="hero-bg"
-            src="/Untitled%20video%20-%20Made%20with%20Clipchamp%20(4).mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            poster="/domestic.jpg"
+            src="/icons/Brown Autumn Photo Collage.png"
+            alt="Adhvaga Holidays - Travel Destinations"
+            style={{ objectPosition: 'center top' }}
             fetchpriority="high"
-            aria-label="Travel destination video background"
           />
           <div className="hero-overlay" />
 
