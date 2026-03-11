@@ -150,7 +150,7 @@ export default function HomePage() {
         <section className="hero">
           <img
             className="hero-bg"
-            src="/d343f2fd-db44-4974-a310-1d44fee25301.jpg"
+            src="/Satiate%20your%20Wanderlust%20in%20The%20City%20of%20Dreams_%20Mumbai.jpg"
             alt="Adhvaga Holidays - Travel Destinations"
             fetchpriority="high"
           />
