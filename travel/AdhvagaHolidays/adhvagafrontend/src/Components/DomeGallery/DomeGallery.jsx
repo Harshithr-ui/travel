@@ -4,30 +4,33 @@ import './DomeGallery.css';
 
 const DEFAULT_IMAGES = [
   {
-    src: 'https://images.unsplash.com/photo-1755331039789-7e5680e26e8f?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Abstract art'
+    src: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=300&q=80',
+    alt: 'Travel landscape'
   },
   {
-    src: 'https://images.unsplash.com/photo-1755569309049-98410b94f66d?q=80&w=772&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Modern sculpture'
+    src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&q=80',
+    alt: 'Beach paradise'
   },
   {
-    src: 'https://images.unsplash.com/photo-1755497595318-7e5e3523854f?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Digital artwork'
+    src: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=300&q=80',
+    alt: 'Mountain view'
   },
   {
-    src: 'https://images.unsplash.com/photo-1755353985163-c2a0fe5ac3d8?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Contemporary art'
+    src: 'https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=300&q=80',
+    alt: 'Adventure'
   },
   {
-    src: 'https://images.unsplash.com/photo-1745965976680-d00be7dc0377?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Geometric pattern'
+    src: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=300&q=80',
+    alt: 'Nature scene'
   },
   {
-    src: 'https://images.unsplash.com/photo-1752588975228-21f44630bb3c?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Textured surface'
+    src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=300&q=80',
+    alt: 'Scenic beauty'
   },
-  { src: 'https://pbs.twimg.com/media/Gyla7NnXMAAXSo_?format=jpg&name=large', alt: 'Social media image' }
+  {
+    src: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=300&q=80',
+    alt: 'Waterfall'
+  }
 ];
 
 const DEFAULTS = {
@@ -648,7 +651,18 @@ export default function DomeGallery({
                   onClick={(e) => onTileClick(e, i)}
                   onPointerUp={(e) => onTilePointerUp(e, i)}
                 >
-                  <img src={it.src} draggable={false} alt={it.alt} loading="lazy" decoding="async" />
+                  <img 
+                    src={it.src} 
+                    draggable={false} 
+                    alt={it.alt} 
+                    loading="eager" 
+                    decoding="async"
+                    crossOrigin="anonymous"
+                    referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      e.target.src = 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=300&h=400&fit=crop';
+                    }}
+                  />
                   {showInfo && it.name && (
                     <div className="item__info">
                       <h4 className="item__name">{it.name}</h4>
