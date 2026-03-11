@@ -1,3 +1,4 @@
+/* About Page Services Section - Unique Class Names */
 .services-section {
   padding: 5rem 2rem;
   background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
@@ -18,20 +19,21 @@
   pointer-events: none;
 }
 
-.services-container {
-  max-width: 1100px;
-  margin: 0 auto;
+.services-section .services-container {
+  max-width: 100%;
   width: 100%;
+  padding: 0 2rem;
+  margin: 0 auto;
   position: relative;
   z-index: 1;
 }
 
-.services-header {
+.services-section .services-header {
   text-align: center;
   margin-bottom: 3rem;
 }
 
-.services-title {
+.services-section .services-title {
   font-size: 2.5rem;
   font-weight: 600;
   color: #ffffff;
@@ -39,7 +41,7 @@
   font-family: 'Stardom', serif;
 }
 
-.services-brand {
+.services-section .services-brand {
   font-size: 1rem;
   color: #facc15;
   font-weight: 500;
@@ -47,31 +49,34 @@
   text-transform: uppercase;
 }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
+.services-section .services-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
   width: 100%;
+  flex-wrap: nowrap;
 }
 
-.service-card {
+.services-section .service-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  background: #ffffff;
+  border: none;
+  border-radius: 20px;
   text-align: center;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
-  animation: fadeInUp 0.6s ease forwards;
+  animation: aboutFadeInUp 0.6s ease forwards;
   opacity: 0;
-  aspect-ratio: 1 / 1;
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes fadeInUp {
+@keyframes aboutFadeInUp {
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -82,31 +87,30 @@
   }
 }
 
-.service-card-bg {
+.services-section .service-card-bg {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(250, 204, 21, 0.15) 0%, rgba(250, 204, 21, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(250, 204, 21, 0.3) 0%, rgba(250, 204, 21, 0.1) 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
-  border-radius: 16px;
+  border-radius: 20px;
 }
 
-.service-card:hover {
-  transform: translateY(-8px) scale(1.05);
-  border-color: rgba(250, 204, 21, 0.4);
+.services-section .service-card:hover {
+  transform: translateY(-12px) scale(1.05);
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(250, 204, 21, 0.1);
+    0 25px 50px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(250, 204, 21, 0.2);
 }
 
-.service-card:hover .service-card-bg {
+.services-section .service-card:hover .service-card-bg {
   opacity: 1;
 }
 
-.service-content {
+.services-section .service-content {
   position: relative;
   z-index: 1;
   padding: 1rem;
@@ -117,33 +121,33 @@
   height: 100%;
 }
 
-.service-icon {
-  font-size: 2rem;
+.services-section .service-icon {
+  font-size: 2.25rem;
   margin-bottom: 0.75rem;
   display: inline-block;
   transition: transform 0.3s ease;
 }
 
-.service-card:hover .service-icon {
-  transform: scale(1.15) rotate(5deg);
+.services-section .service-card:hover .service-icon {
+  transform: scale(1.2) rotate(5deg);
 }
 
-.service-card .service-title {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #ffffff;
+.services-section .service-card .service-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
   margin-bottom: 0.5rem;
   transition: color 0.3s ease;
   line-height: 1.3;
 }
 
-.service-card:hover .service-title {
-  color: #facc15;
+.services-section .service-card:hover .service-title {
+  color: #b8860b;
 }
 
-.service-description {
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.7);
+.services-section .service-description {
+  font-size: 0.65rem;
+  color: #666;
   line-height: 1.4;
   margin: 0;
   display: -webkit-box;
@@ -153,25 +157,16 @@
 }
 
 /* Tablet - 3x2 grid */
-@media (max-width: 1024px) {
-  .services-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    max-width: 500px;
+@media (max-width: 1100px) {
+  .services-section .services-grid {
+    flex-wrap: wrap;
+    max-width: 520px;
     margin: 0 auto;
   }
   
-  .service-icon {
-    font-size: 1.75rem;
-  }
-  
-  .service-card .service-title {
-    font-size: 0.8rem;
-  }
-  
-  .service-description {
-    font-size: 0.65rem;
-    -webkit-line-clamp: 2;
+  .services-section .service-card {
+    width: 150px;
+    height: 150px;
   }
 }
 
@@ -181,46 +176,59 @@
     padding: 3rem 1rem;
   }
   
-  .services-title {
+  .services-section .services-container {
+    padding: 0 0.5rem;
+  }
+  
+  .services-section .services-title {
     font-size: 2rem;
   }
   
-  .services-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .services-section .services-grid {
     gap: 0.75rem;
-    max-width: 100%;
+    max-width: 340px;
   }
   
-  .service-content {
+  .services-section .service-card {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .services-section .service-content {
     padding: 0.5rem;
   }
   
-  .service-icon {
+  .services-section .service-icon {
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
   }
   
-  .service-card .service-title {
-    font-size: 0.7rem;
-    margin-bottom: 0.25rem;
+  .services-section .service-card .service-title {
+    font-size: 0.6rem;
+    margin-bottom: 0;
   }
   
-  .service-description {
+  .services-section .service-description {
     display: none;
   }
 }
 
 /* Very small mobile */
-@media (max-width: 400px) {
-  .services-grid {
-    gap: 0.5rem;
+@media (max-width: 380px) {
+  .services-section .services-grid {
+    max-width: 280px;
   }
   
-  .service-icon {
+  .services-section .service-card {
+    width: 85px;
+    height: 85px;
+  }
+  
+  .services-section .service-icon {
     font-size: 1.25rem;
   }
   
-  .service-card .service-title {
-    font-size: 0.6rem;
+  .services-section .service-card .service-title {
+    font-size: 0.55rem;
   }
 }
