@@ -39,7 +39,8 @@ function Domestic() {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
+          poster="/domestic.jpg"
           style={{
             position: 'absolute',
             top: 0,
@@ -48,6 +49,11 @@ function Domestic() {
             height: '100%',
             objectFit: 'cover',
             zIndex: 0,
+          }}
+        >
+          <source src="/get (2).mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
           }}
         >
           <source src="/get%20(2).mp4" type="video/mp4" />
