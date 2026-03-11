@@ -152,7 +152,6 @@ export default function HomePage() {
             className="hero-bg"
             src="/icons/Brown Autumn Photo Collage.png"
             alt="Adhvaga Holidays - Travel Destinations"
-            style={{ objectPosition: 'center top' }}
             fetchpriority="high"
           />
           <div className="hero-overlay" />
