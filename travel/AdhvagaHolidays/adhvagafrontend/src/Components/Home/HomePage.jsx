@@ -150,7 +150,7 @@ export default function HomePage() {
         <section className="hero">
           <video
             className="hero-bg"
-            src="/Untitled video - Made with Clipchamp (4).mp4"
+            src="/Untitled%20video%20-%20Made%20with%20Clipchamp%20(4).mp4"
             autoPlay
             loop
             muted

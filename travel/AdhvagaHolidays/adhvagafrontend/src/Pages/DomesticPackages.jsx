@@ -52,7 +52,7 @@ function Domestic() {
             zIndex: 0,
           }}
         >
-          <source src="/get (2).mp4" type="video/mp4" />
+          <source src="/get%20(2).mp4" type="video/mp4" />
         </video>
 
         <div style={{

@@ -648,7 +648,7 @@ export default function DomeGallery({
                   onClick={(e) => onTileClick(e, i)}
                   onPointerUp={(e) => onTilePointerUp(e, i)}
                 >
-                  <img src={it.src} draggable={false} alt={it.alt} />
+                  <img src={it.src} draggable={false} alt={it.alt} loading="lazy" decoding="async" />
                   {showInfo && it.name && (
                     <div className="item__info">
                       <h4 className="item__name">{it.name}</h4>
