@@ -150,7 +150,7 @@ export default function HomePage() {
         <section className="hero">
           <img
             className="hero-bg"
-            src="/icons/Brown Autumn Photo Collage.png"
+            src="/d343f2fd-db44-4974-a310-1d44fee25301.jpg"
             alt="Adhvaga Holidays - Travel Destinations"
             fetchpriority="high"
           />
