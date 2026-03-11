@@ -33,14 +33,9 @@ function International() {
         }}
         aria-label="International holidays hero section"
       >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/pexels-dominikagregus-672532.jpg"
-          aria-hidden="true"
+        <img
+          src="/icons/76f7ce5b-0b5a-4500-a215-877d187f37cf.jpg"
+          alt="Explore World - International Holiday Destinations"
           style={{
             position: 'absolute',
             top: 0,
@@ -48,11 +43,10 @@ function International() {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
+            objectPosition: 'center top',
             zIndex: 0,
           }}
-        >
-          <source src="/AQO5C05U8--9upfgLhhH3ciYF9l5utiHDgxVGDvoyv5s0bIvOLVcwAVXa79bAMTTojK_ivDnd9vIlVK6cTW81huFVlcUS_oN.mp4" type="video/mp4" />
-        </video>
+        />
 
         <div style={{
           position: 'absolute',

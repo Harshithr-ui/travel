@@ -34,14 +34,9 @@ function Domestic() {
         }}
         aria-label="Domestic holidays hero section"
       >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/domestic.jpg"
-          aria-hidden="true"
+        <img
+          src="/icons/353833df-d0f8-4897-aa79-ff088a22aa98.jpg"
+          alt="Explore India - Domestic Holiday Destinations"
           style={{
             position: 'absolute',
             top: 0,
@@ -49,11 +44,10 @@ function Domestic() {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
+            objectPosition: 'center top',
             zIndex: 0,
           }}
-        >
-          <source src="/get%20(2).mp4" type="video/mp4" />
-        </video>
+        />
 
         <div style={{
           position: 'absolute',
