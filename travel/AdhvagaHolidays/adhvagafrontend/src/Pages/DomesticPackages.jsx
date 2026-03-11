@@ -52,11 +52,6 @@ function Domestic() {
           }}
         >
           <source src="/get (2).mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-          }}
-        >
-          <source src="/get%20(2).mp4" type="video/mp4" />
         </video>
 
         <div style={{
